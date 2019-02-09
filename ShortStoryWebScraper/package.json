@@ -1,0 +1,27 @@
+{
+  "name": "shortstorywebscraper",
+  "version": "1.0.0",
+  "description": "Webscraper that grabs short stories",
+  "main": "scraper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JapanPanda/HackDavis2019Dyslexia.git"
+  },
+  "keywords": [
+    "dyslexia"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JapanPanda/HackDavis2019Dyslexia/issues"
+  },
+  "homepage": "https://github.com/JapanPanda/HackDavis2019Dyslexia#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
