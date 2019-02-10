@@ -1,13 +1,18 @@
-async function button_press(full_text) {
+async function button_press() {
 	/*
 	// THIS IS A TEST
 	current_sentence = ["I LOVE LISA YEE.", "I DON'T KNOW WHAT SHE IS THINKING.", "BLAH BLAH!"]
 	delay = [1000, 2000, 3000, 4000]
 	// THIS IS A TEST
-	*/
+	*/  
 
-	delay = await setup(full_text)
-	current_sentence = split(full_text)
+  total_text = $('.short-story').text()
+  total_text = total_text.replace("<span>", "");
+  total_text = total_text.replace("<\span>", "");
+  total_text = total_text.replace("<break>", "");
+  current_sentence = split(total_text)
+
+	delay = await setup(total_text)
 	main(arrDelay)
 
 	for (var i = 0; i < delay.length - 1; i++) {
