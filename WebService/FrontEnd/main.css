@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Cutive+Mono|Megrim');
+
+@font-face {
+  font-family: OpenDyslexic;
+  src: url(Fonts/OpenDyslexic2/OpenDyslexic-Regular.otf);
+}
+
+body {
+  font-size: 20px;
+}
+.banner {
+  font-family: 'Megrim';
+}
+
+h2 {
+  font-family: 'OpenDyslexic', bold;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: rgba(186, 197, 200, 0.2);
+}
+
+.short-story {
+  font-family: 'OpenDyslexic';
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: rgba(186, 197, 200, 0.5);
+}
+
+.subheading {
+  font-family: 'OpenDyslexic', bold;
+}
+
+.mission-statement {
+  font-family: 'OpenDyslexic';
+  margin: 0px 100px 0px 100px;
+  background-color: rgba(186, 197, 200, 0.5);
+}
