@@ -1,5 +1,6 @@
 // Gets array of sentences, then gets audio for each
-async function get_audio(inp) {
+async function get_audio(inp, title) {
+	console.log(inp);
 	const textToSpeech = require('@google-cloud/text-to-speech');
 	const fs = require('fs');
 	const util = require('util');
@@ -19,10 +20,11 @@ async function get_audio(inp) {
 
 
 		const writeFile = util.promisify(fs.writeFile);
-		const outputFileName = 'audio/output' + i + '.mp3';
+		const outputFileName = 'audio/' + output' + i + '.mp3';
 
-		//play_audio(response.audioContent);
-		await writeFile(outputFileName, response.audioContent, 'binary');
+		await writeFile(outputFileName, response.audioContent, 'binary').catch((err) => {
+			console.log(err);
+		});
 
 		console.log(`Audio content written to file: ${outputFileName}`);
 	}
@@ -38,7 +40,7 @@ function split(inp) {
 }
 
 function doSetTimeout(iter, cur_delay) {
-	setTimeout(function() { 
+	setTimeout(function() {
 		var name = './audio/output' + iter + '.mp3'
 		play_audio(name);
 	}, cur_delay);
@@ -91,13 +93,10 @@ function main(arrDelay) {
 	}
 }
 
-
-/*
 async function test(inp) {
+	console.log(inp);
 	var arrDelay = await setup(inp);
 	main(arrDelay);
 }
 
-test('I LOVE LISA YEE. I DON\'T KNOW WHAT SHE IS THINKING. BLAH BLAH! GO BEARS. IS THIS WORKING?');
-*/
-
+test('chickens are cool. cool stuff.\n');

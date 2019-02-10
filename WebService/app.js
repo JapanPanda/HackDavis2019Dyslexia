@@ -6,7 +6,7 @@ const fs = require('fs');
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   var stories = JSON.parse(fs.readFileSync('../ShortStoryWebScraper/stories/shortstories.json', 'utf-8'));
   var chosenStory = stories[Math.floor(Math.random() * stories.length - 1)];
   while (chosenStory == null) {
@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
     textArray[i] = '<span>' + textArray[i];
     textArray[i] = textArray[i] + '</span>';
   }
+
   console.log(textArray.join(""));
   res.render('index', {title: chosenStory['title'], author: chosenStory['author'], text: textArray.join("")});
 });
