@@ -1,13 +1,20 @@
-function play_audio(audio) {
+async function play_audio(audio) {
   var sentences = $(".short-story span");
   for (var i = 0; i < audio.length; i++) {
-    play_audio_delay(i, audio)
+    play_audio_delay(i, audio, sentences);
+    await sleep(audio[i].duration * 1000);
+    console.log('finished');
   }
+}
 
-function play_audio_delay(i, audio) {
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function play_audio_delay(i, audio, sentences) {
     audio[i].play();
     sentences[i].style.backgroundColor = "yellow";
-    audio[i].onended = function() {
+    audio[i].onended = async function() {
       console.log("ended");
       sentences[i].style.backgroundColor = "white";
     }
@@ -43,7 +50,5 @@ function play_audio_delay(i, audio) {
     console.log("ended");
     sentences[4].style.backgroundColor = "white";
   };
-*/
 }
-
-
+*/

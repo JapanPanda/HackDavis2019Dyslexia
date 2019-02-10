@@ -6,8 +6,8 @@ const client = new textToSpeech.TextToSpeechClient();
 async function main() {
   var obj = JSON.parse(fs.readFileSync('../ShortStoryWebScraper/stories/shortstories.json', 'utf-8'));
   for (i in obj) {
-    if (!fs.existsSync('audio/' + obj[i]['title'])) {
-      fs.mkdirSync('audio/' + obj[i]['title']);
+    if (!fs.existsSync('./public/audio/' + obj[i]['title'])) {
+      fs.mkdirSync('./public/ audio/' + obj[i]['title']);
     }
     await getAudioFiles(split(obj[i]['text'].replace('“', '"').replace('”', '"')), obj[i]['title']);
   }
@@ -27,7 +27,7 @@ async function getAudioFiles(inp, title) {
 
 
 		const writeFile = util.promisify(fs.writeFile);
-		const outputFileName = 'audio/' + title + '/' + 'output' + i + '.mp3';
+		const outputFileName = './public/audio/' + title + '/' + 'output' + i + '.mp3';
 
 		//play_audio(response.audioContent);
 		await writeFile(outputFileName, response.audioContent, 'binary').catch((err) => {

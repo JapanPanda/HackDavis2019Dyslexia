@@ -14,23 +14,24 @@ app.get('/', async (req, res) => {
     chosenStory = stories[Math.floor(Math.random() * stories.length - 1)];
   }
   console.log(chosenStory);
-  var text = chosenStory['text'].replace(/\n/g, "<br/><br/>");
-  var textArray = text.match(/[^\.!\?]+[\.!\?]+["']?/g);
+  var text = chosenStory['text'];
+  var textArray = text.match(/[^\.!\?]+[\.!\?”]+[^”]?/g);
+
+  console.log(textArray);
   for (i in textArray) {
+    textArray[i] = textArray[i].replace(/\n/g, "<br/><br>");
     textArray[i] = '<span>' + textArray[i];
     textArray[i] = textArray[i] + '</span>';
   }
-
-  var audio;
-  //for (var i = 0; i < textArray.length; i++) {
-    //audio.append('<audio src="audio/' + chosenStory['title'] + '/output' + i + '.mp3">');
-  //}
-
-  console.log(textArray.join(""));
-  //res.render('index', {title: chosenStory['title'], author: chosenStory['author'], text: textArray.join(""), audio: audio});
+  
+  var audio = '';
+  for (var i = 0; i < textArray.length; i++) {
+    audio += '<audio src="./audio/' + '1' + '/output' + i + '.mp3"></audio>';
+  }
+  res.render('index', {title: chosenStory['title'], author: chosenStory['author'], text: textArray.join(""), audio: audio});
 
   // Testing
-  res.render('index', {title: chosenStory['title'], author: chosenStory['author'], text: textArray.join("")});
+  // res.render('index', {title: chosenStory['title'], author: chosenStory['author'], text: textArray.join("")});
 });
 
 app.listen(port, () => {
