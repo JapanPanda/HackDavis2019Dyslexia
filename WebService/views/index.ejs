@@ -18,7 +18,8 @@
     <div class="title">
       <h2><%= title %> by <%= author %></h2>
     </div>
-    <button id="play-audio" onclick="play_audio(document.getElementsByTagName('audio'));">Play Audio</button>
+    <button id="play-audio" onclick="play_audio();">Play Audio</button>
+    <button id="pause-audio" onclick="pause_audio()">Pause Audio</button>
     <div class="short-story">
         <%- text %>
     </div>
@@ -29,7 +30,6 @@
       <p>Our mission is to dedicate this website for individuals that wish<br>
          to better their reading skills through interactives.</p>
     </div>
-
     <%- audio %>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
