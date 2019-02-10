@@ -1,25 +1,37 @@
 
-@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Cutive+Mono|Megrim');
 
 @font-face {
   font-family: OpenDyslexic;
-  src: url('./fonts/OpenDyslexic2/OpenDyslexic-Regular.otf');
+  src: url('../fonts/OpenDyslexic2/OpenDyslexic-Regular.otf');
+}
+
+@font-face {
+  font-family: MajorMono;
+  src: url('../fonts/Major_Mono_Display/MajorMonoDisplay-Regular.ttf');
 }
 
 body {
   font-size: 20px;
 }
+
 .banner {
-  font-family: 'Megrim';
-  background-color: rgb(83, 83, 83)
+  font-family: 'MajorMono';
+  background-color: rgba(206, 211, 216, .5);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  word-spacing: -5px;
+}
+
+.AboutUs {
+  color: rgb(112, 149, 184);
 }
 
 h2 {
   font-family: 'OpenDyslexic', bold;
-  margin-left: 100px;
-  margin-right: 100px;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  padding-left: 275px;
   background-color: rgba(186, 197, 200, 0.2);
-  word-spacing: 40px;
+  word-spacing: 10px;
+  color: rgb(147, 192, 234);
 }
 
 .short-story {
@@ -37,5 +49,5 @@ h2 {
 
 .mission-statement {
   font-family: 'OpenDyslexic';
-  margin: 0px 200px 0px 200px;
+  margin: 0px 300px 0px 300px;
 }
