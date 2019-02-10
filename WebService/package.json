@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/JapanPanda/HackDavis2019Dyslexia#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "path": "^0.12.7"
   }
