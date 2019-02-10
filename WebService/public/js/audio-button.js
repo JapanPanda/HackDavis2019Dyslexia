@@ -1,9 +1,34 @@
+var current_play = 0
+var isRunning = false
+
 async function play_audio(audio) {
+  if (!isRunning) {
   var sentences = $(".short-story span");
-  for (var i = 0; i < audio.length; i++) {
-    play_audio_delay(i, audio, sentences);
-    await sleep(audio[i].duration * 1000);
+    isRunning = true
+    for (var i = 0; i < audio.length; i++) {
+      current_play = i
+      play_audio_delay(i, audio, sentences);
+      await sleep(audio[i].duration * 1000);
+      console.log('finished');
+    }
+    isRunning = false
+}
+}
+
+async function play_one(audio) {
+  if (!isRunning) {
+    isRunning = true
+    var sentences = $(".short-story span");
+    play_audio_delay(current_play, audio, sentences);
+    await sleep(audio[current_play].duration * 1000);
+
+    // Set next audio to play
+    current_play += 1
+    if (current_play >= audio.length) {
+      current_play = 0
+    }
     console.log('finished');
+    isRunning = false
   }
 }
 
