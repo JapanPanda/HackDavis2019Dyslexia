@@ -16,18 +16,24 @@ body {
 
 .banner {
   font-family: 'MajorMono';
-  background-color: rgba(206, 211, 216, .5);
+  background-color: rgb(206, 211, 216);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   word-spacing: -5px;
 }
 
-.AboutUs {
-  color: rgb(112, 149, 184);
+.padright {
+  padding-right: 10px;
+}
+
+.center {
+  font-weight: lighter;
+  font-size: 20px;
 }
 
 h2 {
   font-family: 'OpenDyslexic';
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0px 0px 0px 0px;
   text-align: center;
   background-color: rgba(186, 197, 200, 0.2);
@@ -44,6 +50,7 @@ h2 {
 
 .subheading {
   font-family: 'OpenDyslexic';
+  box-shadow: 0 4px 8px 0 rgba(210, 233, 255, 0.2), 0 6px 20px 0 rgba(210, 233, 255, 0.19);
 }
 
 .mission-statement {
