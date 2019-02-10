@@ -1,12 +1,36 @@
 var audio = document.getElementsByTagName('audio');
-var currentidx = 0;
 
 async function play_audio() {
+var current_play = 0
+var isRunning = false
+
+  if (!isRunning) {
   var sentences = $(".short-story span");
-  for (var i = 0; i < audio.length; i++) {
-    play_audio_delay(i, audio, sentences);
-    await sleep(audio[i].duration * 1000);
+    isRunning = true
+    for (var i = 0; i < audio.length; i++) {
+      current_play = i
+      play_audio_delay(i, sentences);
+      await sleep(audio[i].duration * 1000);
+      console.log('finished');
+    }
+    isRunning = false
+  }
+}
+
+async function play_one() {
+  if (!isRunning) {
+    isRunning = true
+    var sentences = $(".short-story span");
+    play_audio_delay(current_play, sentences);
+    await sleep(audio[current_play].duration * 1000);
+
+    // Set next audio to play
+    current_play += 1
+    if (current_play >= audio.length) {
+      current_play = 0
+    }
     console.log('finished');
+    isRunning = false
   }
 }
 
@@ -16,7 +40,6 @@ function sleep(ms) {
 
 async function play_audio_delay(i, sentences) {
     audio[i].play();
-    currentidx = i;
     sentences[i].style.backgroundColor = "yellow";
     audio[i].onended = async function() {
       console.log("ended");
@@ -25,7 +48,7 @@ async function play_audio_delay(i, sentences) {
 }
 
 function pause_audio() {
-  audio[currentidx].pause();
+  audio[current_play].pause();
 }
 
   /*audio[0].play();
