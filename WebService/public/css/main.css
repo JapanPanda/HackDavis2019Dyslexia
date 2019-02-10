@@ -1,9 +1,8 @@
 
-@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Cutive+Mono|Megrim');
 
 @font-face {
   font-family: OpenDyslexic;
-  src: url('./fonts/OpenDyslexic2/OpenDyslexic-Regular.otf');
+  src: url('../fonts/OpenDyslexic2/OpenDyslexic-Regular.otf');
 }
 
 body {
