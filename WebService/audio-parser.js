@@ -9,7 +9,9 @@ async function main() {
     if (!fs.existsSync('./public/audio/' + obj[i]['title'])) {
       fs.mkdirSync('./public/ audio/' + obj[i]['title']);
     }
-    await getAudioFiles(split(obj[i]['text'].replace('“', '"').replace('”', '"')), obj[i]['title']);
+    // console.log(obj[i]['text'].replace(/“/g, '"').replace(/”/g, '"').replace(/"/g, ""));
+    // console.log(split(obj[i]['text'].replace(/“/g, '"').replace(/”/g, '"')));
+    await getAudioFiles(split(obj[i]['text'].replace(/“/g, '"').replace(/”/g, '"').replace(/"/g, "")), obj[i]['title']);
   }
 }
 
@@ -39,7 +41,7 @@ async function getAudioFiles(inp, title) {
 }
 
 function split(inp) {
-	return inp.match( /[^\.!\?]+[\.!\?]/g );
+	return inp.match( /[^\.!\?]+[\.!\?][^”"]/g );
 }
 
 main();

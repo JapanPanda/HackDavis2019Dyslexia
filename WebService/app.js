@@ -23,10 +23,10 @@ app.get('/', async (req, res) => {
     textArray[i] = '<span>' + textArray[i];
     textArray[i] = textArray[i] + '</span>';
   }
-  
+
   var audio = '';
   for (var i = 0; i < textArray.length; i++) {
-    audio += '<audio src="./audio/' + '1' + '/output' + i + '.mp3"></audio>';
+    audio += '<audio src="./audio/' + chosenStory['title'] + '/output' + i + '.mp3"></audio>';
   }
   res.render('index', {title: chosenStory['title'], author: chosenStory['author'], text: textArray.join(""), audio: audio});
 
