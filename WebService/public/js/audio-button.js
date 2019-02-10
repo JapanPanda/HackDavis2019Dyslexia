@@ -1,13 +1,10 @@
-<<<<<<< HEAD
 var current_play = -1;
 var isRunning = false;
-=======
 var audio = document.getElementsByTagName('audio');
 
 async function play_audio() {
 var current_play = 0
 var isRunning = false
->>>>>>> 8858cfb4e801b9ae97aec5744c13b228bd6e5d89
 
   if (!isRunning) {
   var sentences = $(".short-story span");
