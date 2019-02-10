@@ -9,7 +9,7 @@ async function main() {
     if (!fs.existsSync('audio/' + obj[i]['title'])) {
       fs.mkdirSync('audio/' + obj[i]['title']);
     }
-    await getAudioFiles(split(obj[i]['text']), obj[i]['title']);
+    await getAudioFiles(split(obj[i]['text'].replace('“', '"').replace('”', '"')), obj[i]['title']);
   }
 }
 
@@ -39,7 +39,7 @@ async function getAudioFiles(inp, title) {
 }
 
 function split(inp) {
-	return inp.match( /[^\.!\?]+[\.!\?]+["']?/g );
+	return inp.match( /[^\.!\?]+[\.!\?]/g );
 }
 
 main();
