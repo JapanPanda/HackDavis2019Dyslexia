@@ -1,5 +1,5 @@
-var current_play = 0
-var isRunning = false
+var current_play = -1;
+var isRunning = false;
 
 async function play_audio(audio) {
   if (!isRunning) {
@@ -12,23 +12,52 @@ async function play_audio(audio) {
       console.log('finished');
     }
     isRunning = false
+  }
 }
+
+async function play_curr(audio) {
+  if (!isRunning) {
+    if (current_play < 0) {
+      current_play = 0;
+    }
+    isRunning = true;
+    var sentences = $(".short-story span");
+    play_audio_delay(current_play, audio, sentences);
+    await sleep(audio[current_play].duration * 1000);
+    console.log('finished');
+    isRunning = false
+  }
+}
+
+async function play_prev(audio) {
+  if (!isRunning) {
+    current_play -= 1;
+    if (current_play < 0) {
+      current_play = 0;
+    }
+    isRunning = true;
+    var sentences = $(".short-story span");
+    play_audio_delay(current_play, audio, sentences);
+    await sleep(audio[current_play].duration * 1000);
+    console.log('finished');
+    isRunning = false
+  }
 }
 
 async function play_one(audio) {
   if (!isRunning) {
-    isRunning = true
+    current_play += 1;
+    isRunning = true;
     var sentences = $(".short-story span");
     play_audio_delay(current_play, audio, sentences);
     await sleep(audio[current_play].duration * 1000);
 
     // Set next audio to play
-    current_play += 1
-    if (current_play >= audio.length) {
-      current_play = 0
+    if (current_play == 0) {
+      current_play = 1;
     }
     console.log('finished');
-    isRunning = false
+    isRunning = false;
   }
 }
 

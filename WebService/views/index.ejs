@@ -18,8 +18,11 @@
     <div class="title">
       <h2><%= title %> by <%= author %></h2>
     </div>
-    <button id="play-audio" class="button-success" onclick="play_audio(document.getElementsByTagName('audio'));">Play Audio</button>
-    <button id="play-one" class="button-success" onclick="play_one(document.getElementsByTagName('audio'))">Play One</button>
+    <button id="play-audio" class="button-success" onclick="play_audio(document.getElementsByTagName('audio'));">Play All</button>
+
+    <button id="play-prev" class="button-success" onclick="play_prev(document.getElementsByTagName('audio'))">Play Previous</button>
+    <button id="play-curr" class="button-success" onclick="play_curr(document.getElementsByTagName('audio'))">Play Current</button>
+    <button id="play-next" class="button-success" onclick="play_one(document.getElementsByTagName('audio'))">Play Next</button>
     <div class="short-story">
         <%- text %>
     </div>
