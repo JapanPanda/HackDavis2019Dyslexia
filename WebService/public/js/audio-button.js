@@ -1,4 +1,7 @@
-async function play_audio(audio) {
+var audio = document.getElementsByTagName('audio');
+var currentidx = 0;
+
+async function play_audio() {
   var sentences = $(".short-story span");
   for (var i = 0; i < audio.length; i++) {
     play_audio_delay(i, audio, sentences);
@@ -11,13 +14,18 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function play_audio_delay(i, audio, sentences) {
+async function play_audio_delay(i, sentences) {
     audio[i].play();
+    currentidx = i;
     sentences[i].style.backgroundColor = "yellow";
     audio[i].onended = async function() {
       console.log("ended");
       sentences[i].style.backgroundColor = "white";
     }
+}
+
+function pause_audio() {
+  audio[currentidx].pause();
 }
 
   /*audio[0].play();
