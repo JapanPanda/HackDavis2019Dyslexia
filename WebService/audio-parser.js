@@ -6,8 +6,6 @@ const client = new textToSpeech.TextToSpeechClient();
 async function main() {
   var obj = JSON.parse(fs.readFileSync('../ShortStoryWebScraper/stories/shortstories.json', 'utf-8'));
   for (i in obj) {
-    if (i != 0)
-      continue;
     if (!fs.existsSync('./public/audio/' + obj[i]['title'])) {
       fs.mkdirSync('./public/ audio/' + obj[i]['title']);
     }
