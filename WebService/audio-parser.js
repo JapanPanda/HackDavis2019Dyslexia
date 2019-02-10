@@ -3,13 +3,13 @@ const fs = require('fs');
 const util = require('util');
 const client = new textToSpeech.TextToSpeechClient();
 
-function main() {
+async function main() {
   var obj = JSON.parse(fs.readFileSync('../ShortStoryWebScraper/stories/shortstories.json', 'utf-8'));
   for (i in obj) {
     if (!fs.existsSync('audio/' + obj[i]['title'])) {
       fs.mkdirSync('audio/' + obj[i]['title']);
     }
-    getAudioFiles(split(obj[i]['text']), obj[i]['title']);
+    await getAudioFiles(split(obj[i]['text']), obj[i]['title']);
   }
 }
 

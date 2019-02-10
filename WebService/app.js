@@ -8,7 +8,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', async (req, res) => {
   var stories = JSON.parse(fs.readFileSync('../ShortStoryWebScraper/stories/shortstories.json', 'utf-8'));
-  var chosenStory = stories[Math.floor(Math.random() * stories.length - 1)];
+  // var chosenStory = stories[Math.floor(Math.random() * stories.length - 1)];
+  var chosenStory = stories[0];
   while (chosenStory == null) {
     chosenStory = stories[Math.floor(Math.random() * stories.length - 1)];
   }
