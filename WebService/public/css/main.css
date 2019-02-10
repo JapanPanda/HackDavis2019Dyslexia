@@ -1,4 +1,11 @@
+#new {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
 
+.refresh {
+  text-align:center;
+}
 .button-success,
 .button-error,
 .button-warning,
