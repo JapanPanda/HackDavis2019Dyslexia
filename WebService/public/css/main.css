@@ -26,9 +26,10 @@ body {
 }
 
 h2 {
-  font-family: 'OpenDyslexic', bold;
+  font-family: 'OpenDyslexic';
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  padding-left: 275px;
+  margin: 0px 0px 0px 0px;
+  text-align: center;
   background-color: rgba(186, 197, 200, 0.2);
   word-spacing: 10px;
   color: rgb(147, 192, 234);
@@ -36,18 +37,16 @@ h2 {
 
 .short-story {
   font-family: 'OpenDyslexic';
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 300px;
-  margin-right: 300px;
+  margin: 10px 0px;
+  padding: 0px 50px;
   word-spacing: 5px;
 }
 
 .subheading {
-  font-family: 'OpenDyslexic', bold;
+  font-family: 'OpenDyslexic';
 }
 
 .mission-statement {
   font-family: 'OpenDyslexic';
-  margin: 0px 300px 0px 300px;
+  margin: 0px 0px 0px 0px;
 }
