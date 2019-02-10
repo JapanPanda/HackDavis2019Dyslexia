@@ -1,13 +1,20 @@
+<<<<<<< HEAD
 var current_play = -1;
 var isRunning = false;
+=======
+var audio = document.getElementsByTagName('audio');
 
-async function play_audio(audio) {
+async function play_audio() {
+var current_play = 0
+var isRunning = false
+>>>>>>> 8858cfb4e801b9ae97aec5744c13b228bd6e5d89
+
   if (!isRunning) {
   var sentences = $(".short-story span");
     isRunning = true
     for (var i = 0; i < audio.length; i++) {
       current_play = i
-      play_audio_delay(i, audio, sentences);
+      play_audio_delay(i, sentences);
       await sleep(audio[i].duration * 1000);
       console.log('finished');
     }
@@ -44,12 +51,12 @@ async function play_prev(audio) {
   }
 }
 
-async function play_one(audio) {
+async function play_one() {
   if (!isRunning) {
     current_play += 1;
     isRunning = true;
     var sentences = $(".short-story span");
-    play_audio_delay(current_play, audio, sentences);
+    play_audio_delay(current_play, sentences);
     await sleep(audio[current_play].duration * 1000);
 
     // Set next audio to play
@@ -65,13 +72,17 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function play_audio_delay(i, audio, sentences) {
+async function play_audio_delay(i, sentences) {
     audio[i].play();
     sentences[i].style.backgroundColor = "yellow";
     audio[i].onended = async function() {
       console.log("ended");
       sentences[i].style.backgroundColor = "white";
     }
+}
+
+function pause_audio() {
+  audio[current_play].pause();
 }
 
   /*audio[0].play();

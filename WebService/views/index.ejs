@@ -18,11 +18,18 @@
     <div class="title">
       <h2><%= title %> by <%= author %></h2>
     </div>
+<<<<<<< HEAD
     <button id="play-audio" class="button-success" onclick="play_audio(document.getElementsByTagName('audio'));">Play All</button>
 
     <button id="play-prev" class="button-success" onclick="play_prev(document.getElementsByTagName('audio'))">Play Previous</button>
     <button id="play-curr" class="button-success" onclick="play_curr(document.getElementsByTagName('audio'))">Play Current</button>
     <button id="play-next" class="button-success" onclick="play_one(document.getElementsByTagName('audio'))">Play Next</button>
+=======
+    <button id="play-audio" onclick="play_audio();">Play Audio</button>
+    <button id="pause-audio" onclick="pause_audio()">Pause Audio</button>
+    <button id="play-audio" onclick="play_audio();">Play Audio</button>
+    <button id="play-one" onclick="play_one()">Play One</button>
+>>>>>>> 8858cfb4e801b9ae97aec5744c13b228bd6e5d89
     <div class="short-story">
         <%- text %>
     </div>
@@ -33,7 +40,6 @@
       <p>Our mission is to dedicate this website for individuals that wish<br>
          to better their reading skills through interactives.</p>
     </div>
-
     <%- audio %>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
