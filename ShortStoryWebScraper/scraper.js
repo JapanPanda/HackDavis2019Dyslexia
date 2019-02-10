@@ -1,7 +1,6 @@
 const rp = require('request-promise');
 const $ = require('cheerio');
-const animalstoriesurl = 'http://www.english-for-students.com/Animal-Stories.html';
-const shortstoryurl = 'https://americanliterature.com/100-great-short-stories'
+const animalstoriesurl = 'https://www.bedtime.com/category/stories/animal-stories/';
 const fs = require('fs');
 
 
@@ -18,8 +17,7 @@ async function scrapeshortstoryurl() {
     .then(($) => {
       console.log('Successfully loaded webpage. Initializing scraping.');
       var _urllist = [];
-      var links = $('ol li a');
-      console.log(links.length);
+      var links = $('h2 a');
       for(var i = 0; i < links.length; i++) {
         url = links.eq(i).attr('href');
         console.log(url);
@@ -33,54 +31,59 @@ async function scrapeshortstoryurl() {
     });
 
   var promiseList = [];
+  var jsonOutput = [];
+  for (i in urllist) {
+    console.log(urllist[i]);
+    promiseList.push(scrapeIndividualPage(urllist[i]));
+  }
+  jsonOutput = await scrapeAllPages(promiseList, jsonOutput);
+  jsonOutput = jsonOutput.filter((el) => {
+    return el != null;
+  });
+  console.log('Finished scraping');
+  fs.writeFileSync('./stories/shortstories.json', JSON.stringify(jsonOutput, null, 2), 'utf-8');
+}
+
+async function scrapeAllPages(promiseList, jsonOutput) {
+  console.log('Starting to scrape now');
+  return Promise.all(promiseList)
+    .then((jsonObject) => {
+      return jsonObject;
+    })
+    .catch((err) => {
+      console.error('Something went wrong');
+      console.error(err);
+    });
+}
+
+async function scrapeIndividualPage(url) {
   var urloptions = {
-    uri: urllist[1],
+    uri: url,
     transform: function(body) {
       return $.load(body);
     }
   }
-  var jsonOutput = [];
-
-  var jsonObject = await rp(urloptions)
-    .then(($) => {
-      console.log('Loaded ' + urloptions.uri);
-      var title = $('h3').eq(0).text();
-      var text;
-      for (x in $('span')) {
-        if ($(x).attr('ezoic-ad') == null) {
-          console.log('hi');
-          text = $(x).text();
-          console.log(text);
+  return rp(urloptions)
+      .then(($) => {
+        console.log('Loaded ' + urloptions.uri);
+        if ($('.download').text() != '') {
+          console.log('Requires pdf, not adding...');
+          return;
         }
-      }
-      var _jsonObject = {};
-      _jsonObject['title'] = title;
-      _jsonObject['text'] = text;
-      return _jsonObject;
-    })
-    .catch((err) => {
-      console.error('Error loading ' + urloptions.uri);
-    });
-  console.log(jsonObject);
-  // for (url in urllist) {
-  //   var urloptions = {
-  //     uri: url,
-  //     transform: function(body) {
-  //       return $.load(body);
-  //     }
-  //   }
-  //   promiseList.push(new Promise(rp(urloptions)
-  //     .then(($) => {
-  //       console.log
-  //     })
-  //     .catch((err) => {
-  //
-  //     });
-  //   ));
-  // }
-
+        var title = $('h1').text().split('  ')[0];
+        var text = $('.entry-content').text().replace('\n\n      Like this story\n    \n', '');
+        var author = $("span[itemprop='name'] a").text();
+        var _jsonObject = {};
+        _jsonObject['title'] = title;
+        _jsonObject['author'] = author;
+        _jsonObject['text'] = text;
+        return _jsonObject;
+      })
+      .catch((err) => {
+        console.error('Error loading ' + urloptions.uri);
+        console.error(err);
+      })
 }
-
 async function main() {
   console.log('Running short story scraper');
   await scrapeshortstoryurl();
